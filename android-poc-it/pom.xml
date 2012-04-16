@@ -5,12 +5,12 @@
   <parent>
     <groupId>org.diveintojee.poc.android</groupId>
     <artifactId>android-poc-parent</artifactId>
-    <version>0.1</version>
+    <version>0.2-SNAPSHOT</version>
   </parent>
 
   <groupId>org.diveintojee.poc.android</groupId>
   <artifactId>android-poc-it</artifactId>
-  <version>0.1</version>
+  <version>0.2-SNAPSHOT</version>
   <packaging>apk</packaging>
   <name>android-poc-it - Integration tests</name>
 
@@ -35,14 +35,14 @@
       <groupId>org.diveintojee.poc.android</groupId>
       <artifactId>android-poc</artifactId>
       <type>apk</type>
-      <version>0.1</version>
+      <version>0.2-SNAPSHOT</version>
       <classifier>${zipaligned-classifier}</classifier> <!--  classifier set according to the ran profile -->
     </dependency>
     <dependency>
       <groupId>org.diveintojee.poc.android</groupId>
       <artifactId>android-poc</artifactId>
       <type>jar</type>
-      <version>0.1</version>
+      <version>0.2-SNAPSHOT</version>
     </dependency>
     <dependency>
        <groupId>junit</groupId>
