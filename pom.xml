@@ -4,7 +4,7 @@
 
     <groupId>org.diveintojee.poc.android</groupId>
     <artifactId>android-poc-parent</artifactId>
-    <version>0.1</version>
+    <version>0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>android-poc - Parent</name>
     <scm>
