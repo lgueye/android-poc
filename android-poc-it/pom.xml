@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>org.diveintojee.poc.android</groupId>
     <artifactId>android-poc-parent</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1</version>
   </parent>
 
   <artifactId>android-poc-it</artifactId>
@@ -18,7 +17,7 @@
         When not running a release, we are deploying the plain artifact (so no classifier)
         This is overridden during the release.
       -->
-      <zipaligned-classifier></zipaligned-classifier>
+      <zipaligned-classifier />
   </properties>
 
   <dependencies>
@@ -34,14 +33,14 @@
       <groupId>org.diveintojee.poc.android</groupId>
       <artifactId>android-poc</artifactId>
       <type>apk</type>
-      <version>0.1-SNAPSHOT</version>
+      <version>0.1</version>
       <classifier>${zipaligned-classifier}</classifier> <!--  classifier set according to the ran profile -->
     </dependency>
     <dependency>
       <groupId>org.diveintojee.poc.android</groupId>
       <artifactId>android-poc</artifactId>
       <type>jar</type>
-      <version>0.1-SNAPSHOT</version>
+      <version>0.1</version>
     </dependency>
     <dependency>
        <groupId>junit</groupId>
