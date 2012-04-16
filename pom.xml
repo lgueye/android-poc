@@ -8,15 +8,17 @@
     <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>android-poc - Parent</name>
-
+    <scm>
+        <connection>scm:git:ssh://git@github.com/lgueye/android-poc.git</connection>
+        <url>git:ssh://git@github.com/lgueye/android-poc.git</url>
+    </scm>
     <modules>
         <module>android-poc</module>
         <module>android-poc-it</module>
     </modules>
 
     <properties>
-        <platform.version> 2.3.3
-            </platform.version>
+        <platform.version>2.3.3</platform.version>
     </properties>
 
     <dependencyManagement>
@@ -66,7 +68,7 @@
                         <sdk>
                             <platform>10</platform>
                         </sdk>
-                                                <undeployBeforeDeploy>true</undeployBeforeDeploy>
+                        <undeployBeforeDeploy>true</undeployBeforeDeploy>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -166,8 +168,7 @@
                                         <requireProperty>
                                             <property>sign.storepass</property>
                                             <message>The 'sign.storepass' property is missing. It must contain the password of
-                                                the keystore used to sign the application.
-                      </message>
+                                                the keystore used to sign the application</message>
                                         </requireProperty>
                                         <requireProperty>
                                             <property>sign.keypass</property>
