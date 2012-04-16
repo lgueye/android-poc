@@ -9,9 +9,7 @@
     <version>0.1-SNAPSHOT</version>
   </parent>
 
-  <groupId>org.diveintojee.poc.android</groupId>
   <artifactId>android-poc-it</artifactId>
-  <version>0.1-SNAPSHOT</version>
   <packaging>apk</packaging>
   <name>android-poc-it - Integration tests</name>
 

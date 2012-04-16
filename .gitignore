@@ -1,1 +1,6 @@
 *.keystore
+.project
+.settings/
+.classpath
+target/
+release.properties

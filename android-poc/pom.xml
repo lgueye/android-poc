@@ -9,9 +9,7 @@
     <version>0.1-SNAPSHOT</version>
   </parent>
 
-  <groupId>org.diveintojee.poc.android</groupId>
   <artifactId>android-poc</artifactId>
-  <version>0.1-SNAPSHOT</version>
   <packaging>apk</packaging>
   <name>android-poc - Application</name>
 
