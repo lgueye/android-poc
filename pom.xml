@@ -4,7 +4,7 @@
 
     <groupId>org.diveintojee.poc.android</groupId>
     <artifactId>android-poc-parent</artifactId>
-    <version>0.1</version>
+    <version>0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>android-poc - Parent</name>
     <scm>
@@ -15,9 +15,22 @@
         <module>android-poc</module>
         <module>android-poc-it</module>
     </modules>
-
+	<prerequisites>
+		<maven>3.0.3</maven>
+	</prerequisites>
     <properties>
         <platform.version>2.3.3</platform.version>
+        <android-maven-plugin.version>3.1.1</android-maven-plugin.version>
+        <proguard-maven-plugin.version>2.0.4</proguard-maven-plugin.version>
+        <maven-clean-plugin.version>2.4.1</maven-clean-plugin.version>
+        <maven-deploy-plugin.version>2.7</maven-deploy-plugin.version>
+        <maven-install-plugin.version>2.3.1</maven-install-plugin.version>
+        <maven-jar-plugin.version>2.4</maven-jar-plugin.version>
+        <maven-jarsigner-plugin.version>1.2</maven-jarsigner-plugin.version>
+        <maven-resources-plugin.version>2.5</maven-resources-plugin.version>
+        <maven-site-plugin.version>3.0</maven-site-plugin.version>
+        <maven-surefire-plugin.version>2.12</maven-surefire-plugin.version>
+        <build-helper-maven-plugin.version>1.7</build-helper-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
