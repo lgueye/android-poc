@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.diveintojee.poc.android</groupId>
     <artifactId>android-poc-parent</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1</version>
   </parent>
 
   <artifactId>android-poc-it</artifactId>
@@ -33,14 +33,14 @@
       <groupId>org.diveintojee.poc.android</groupId>
       <artifactId>android-poc</artifactId>
       <type>apk</type>
-      <version>0.1-SNAPSHOT</version>
+      <version>0.1</version>
       <classifier>${zipaligned-classifier}</classifier> <!--  classifier set according to the ran profile -->
     </dependency>
     <dependency>
       <groupId>org.diveintojee.poc.android</groupId>
       <artifactId>android-poc</artifactId>
       <type>jar</type>
-      <version>0.1-SNAPSHOT</version>
+      <version>0.1</version>
     </dependency>
     <dependency>
        <groupId>junit</groupId>
