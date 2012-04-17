@@ -2,4 +2,6 @@
 <resources>
     <string name="hello">Hello android-poc!</string>
     <string name="app_name">android-poc</string>
+    <string name="zoom_in">zoom in</string>
+    <string name="zoom_out">zoom out</string>
 </resources>

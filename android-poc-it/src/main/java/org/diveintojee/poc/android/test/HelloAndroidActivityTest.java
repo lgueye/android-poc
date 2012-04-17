@@ -3,14 +3,14 @@ package org.diveintojee.poc.android.test;
 import android.test.ActivityInstrumentationTestCase2;
 import org.diveintojee.poc.android.*;
 
-public class HelloAndroidActivityTest extends ActivityInstrumentationTestCase2<HelloAndroidActivity> {
+public class HelloAndroidActivityTest extends ActivityInstrumentationTestCase2<HelloGoogleMaps> {
 
     public HelloAndroidActivityTest() {
-        super(HelloAndroidActivity.class); 
+        super(HelloGoogleMaps.class); 
     }
 
     public void testActivity() {
-        HelloAndroidActivity activity = getActivity();
+        HelloGoogleMaps activity = getActivity();
         assertNotNull(activity);
     }
 }

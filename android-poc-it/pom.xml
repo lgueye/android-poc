@@ -33,15 +33,18 @@
       <groupId>org.diveintojee.poc.android</groupId>
       <artifactId>android-poc</artifactId>
       <type>apk</type>
-      <version>0.1-SNAPSHOT</version>
+      <version>${project.version}</version>
       <classifier>${zipaligned-classifier}</classifier> <!--  classifier set according to the ran profile -->
     </dependency>
     <dependency>
       <groupId>org.diveintojee.poc.android</groupId>
       <artifactId>android-poc</artifactId>
       <type>jar</type>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+	<dependency>
+	  <groupId>com.google.android.maps</groupId>
+	  <artifactId>maps</artifactId>
+	</dependency>
     <dependency>
        <groupId>junit</groupId>
        <artifactId>junit</artifactId>
