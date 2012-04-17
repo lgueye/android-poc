@@ -4,3 +4,9 @@
 .classpath
 target/
 release.properties
+bin/
+gen/
+
+
+
+
