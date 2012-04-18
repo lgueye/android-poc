@@ -42,7 +42,7 @@
     <TableRow
         android:id="@+id/footer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="fill_parent" >
 
         <LinearLayout
             android:layout_width="match_parent"
