@@ -32,10 +32,10 @@
         <com.google.android.maps.MapView
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/map"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:apiKey="0wGHQZmAJv4ehdyuKvnujiovUqXPFctTfvwtB5w"
-            android:clickable="true"/>
+            android:clickable="true" />
 
     </TableRow>
 
@@ -48,26 +48,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <ImageView
+            <Button
                 android:id="@+id/zoom_in"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@android:drawable/ic_menu_zoom" />
+                android:text="@string/zoom_in" />
 
-            <ImageView
+            <Button
                 android:id="@+id/zoom_out"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@android:drawable/ic_menu_zoom" />
+                android:text="@string/zoom_out" />
 
-            <ImageView
+            <Button
                 android:id="@+id/pin"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@android:drawable/ic_menu_compass" />
+                android:text="@string/pin" />
+
         </LinearLayout>
     </TableRow>
 

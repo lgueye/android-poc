@@ -1,12 +1,15 @@
 package org.diveintojee.poc.android;
 
+import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.location.Address;
 import android.location.Criteria;
+import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -18,46 +21,14 @@ import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
-import com.google.android.maps.MyLocationOverlay;
 import com.google.android.maps.Overlay;
-import com.google.android.maps.OverlayItem;
 
 public class HelloGoogleMaps extends MapActivity {
-
-    public class GeoUpdateHandler implements LocationListener {
-
-        public void onLocationChanged(final Location location) {
-            final int lat = (int) (location.getLatitude() * 1E6);
-            final int lng = (int) (location.getLongitude() * 1E6);
-            final GeoPoint point = new GeoPoint(lat, lng);
-            createMarker();
-            mapController.animateTo(point);
-            mapController.setCenter(point);
-        }
-
-        public void onProviderDisabled(final String provider) {}
-
-        public void onProviderEnabled(final String provider) {}
-
-        public void onStatusChanged(final String provider, final int status, final Bundle extras) {}
-
-    }
 
     private MapController mapController;
     private MapView mapView;
     private LocationManager locationManager;
-    private MyOverlays itemizedoverlay;
-
-    private MyLocationOverlay myLocationOverlay;
-
-    private void createMarker() {
-        final GeoPoint p = mapView.getMapCenter();
-        final OverlayItem overlayitem = new OverlayItem(p, "", "");
-        itemizedoverlay.addOverlay(overlayitem);
-        if (itemizedoverlay.size() > 0) {
-            mapView.getOverlays().add(itemizedoverlay);
-        }
-    }
+    private EditText editText;
 
     @Override
     protected boolean isRouteDisplayed() {
@@ -71,13 +42,12 @@ public class HelloGoogleMaps extends MapActivity {
 
         // Configure the Map
         mapView = (MapView) findViewById(R.id.map);
-        mapView.setBuiltInZoomControls(true);
-        mapView.setSatellite(true);
-        mapController = mapView.getController();
-        myLocationOverlay = new MyLocationOverlay(this, mapView);
-        mapView.getOverlays().add(myLocationOverlay);
+        editText = (EditText) findViewById(R.id.location);
 
-        final LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        mapView.setBuiltInZoomControls(true);
+        mapView.setSatellite(false);
+        mapController = mapView.getController();
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         final Criteria criteria = new Criteria();
         criteria.setAccuracy(Criteria.ACCURACY_FINE);
@@ -85,20 +55,12 @@ public class HelloGoogleMaps extends MapActivity {
         criteria.setBearingRequired(false);
         criteria.setCostAllowed(true);
         criteria.setPowerRequirement(Criteria.POWER_LOW);
-        final String provider = locationManager.getBestProvider(criteria, true);
-        locationManager.getLastKnownLocation(provider);
+        if (locationManager != null) {
+            final String provider = locationManager.getBestProvider(criteria, true);
+            final Location initialLocation = locationManager.getLastKnownLocation(provider);
+            updateLocation(initialLocation.getLatitude(), initialLocation.getLongitude());
+        }
 
-        myLocationOverlay.runOnFirstFix(new Runnable() {
-            public void run() {
-                mapView.getController().animateTo(myLocationOverlay.getMyLocation());
-            }
-        });
-
-        final Drawable drawable = getResources().getDrawable(R.id.pin);
-        itemizedoverlay = new MyOverlays(this, drawable);
-        createMarker();
-
-        final EditText editText = (EditText) findViewById(R.id.location);
         editText.setOnKeyListener(new OnKeyListener() {
             /**
              * @param v
@@ -106,34 +68,42 @@ public class HelloGoogleMaps extends MapActivity {
              * @param event
              * @return
              */
+            @Override
             public boolean onKey(final View v, final int keyCode, final KeyEvent event) {
-                if (keyCode != KeyEvent.KEYCODE_ENTER)
+                final String locationAsString = editText.getText().toString();
+                if (keyCode != KeyEvent.KEYCODE_ENTER && locationAsString.length() < 3)
                     return false;
-                final String location = editText.getText().toString();
-                updateLocation(location);
+
+                final Geocoder geo = new Geocoder(HelloGoogleMaps.this.getApplicationContext(), Locale.getDefault());
+                List<Address> addresses = Collections.emptyList();
+                try {
+                    addresses = geo.getFromLocationName(locationAsString, 1);
+                } catch (final IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+                if (addresses.isEmpty()) {
+                    editText.setText("Waiting for Location");
+                } else {
+                    if (addresses.size() > 0) {
+                        final Address firstAddress = addresses.get(0);
+                        editText.setText(firstAddress.getFeatureName() + ", " + firstAddress.getLocality() + ", "
+                            + firstAddress.getAdminArea() + ", " + firstAddress.getCountryName());
+                        // Toast.makeText(getApplicationContext(), "Address:- " + addresses.get(0).getFeatureName() +
+                        // addresses.get(0).getAdminArea() + addresses.get(0).getLocality(), Toast.LENGTH_LONG).show();
+                        updateLocation(firstAddress.getLatitude(), firstAddress.getLongitude());
+                    }
+                }
                 return false;
             }
         });
 
     }
 
-    @Override
-    protected void onPause() {
-        super.onResume();
-        myLocationOverlay.disableMyLocation();
-        myLocationOverlay.disableCompass();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        myLocationOverlay.enableMyLocation();
-        myLocationOverlay.enableCompass();
-    }
-
-    private final void updateLocation(final String locationAsString) {
-        final double geoLat = location.getLatitude() * 1E6;
-        final double geoLng = location.getLongitude() * 1E6;
+    private final void updateLocation(final double latitude, final double longitude) {
+        final double geoLat = latitude * 1E6;
+        final double geoLng = longitude * 1E6;
         // converting to integer values which can be passed into the geo point.
         final int mylat = (int) geoLat;
         final int mylng = (int) geoLng;
@@ -146,8 +116,7 @@ public class HelloGoogleMaps extends MapActivity {
         // ---Add a location marker---
         final List<Overlay> listOfOverlays = mapView.getOverlays();
         listOfOverlays.clear();
-        listOfOverlays.add(myLocationOverlay);
-
+        // listOfOverlays.add(new Overlay() {});
         mapView.invalidate();
 
     }

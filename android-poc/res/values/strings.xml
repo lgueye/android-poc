@@ -4,4 +4,5 @@
     <string name="app_name">android-poc</string>
     <string name="zoom_in">zoom in</string>
     <string name="zoom_out">zoom out</string>
+    <string name="pin">pin</string>
 </resources>
