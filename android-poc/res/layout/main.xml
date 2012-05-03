@@ -1,72 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <TableRow
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
 
         <EditText
             android:id="@+id/location"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:ems="10" >
-
-            <requestFocus />
-        </EditText>
+            android:text="Opéra Garnier 75009 Paris" />
 
         <Button
             android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/body"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent" >
-
-        <com.google.android.maps.MapView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/map"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:apiKey="0wGHQZmAJv4ehdyuKvnujiovUqXPFctTfvwtB5w"
-            android:clickable="true" />
-
-    </TableRow>
-
-    <TableRow
-        android:id="@+id/footer"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-            <Button
-                android:id="@+id/zoom_in"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/zoom_in" />
-
-            <Button
-                android:id="@+id/zoom_out"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/zoom_out" />
-
-            <Button
-                android:id="@+id/pin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pin" />
-
-        </LinearLayout>
-    </TableRow>
-
-</TableLayout>
+            android:text="Find Location" />
+    </LinearLayout>
+<!-- 
+    <com.google.android.maps.MapView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/map"
+        android:layout_width="fill_parent"
+        android:layout_height="320px"
+        android:apiKey="0wGHQZmAJv4ehdyuKvnujiovUqXPFctTfvwtB5w"
+        android:clickable="true" />
+-->
+    <com.google.android.maps.MapView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/map"
+        android:layout_width="fill_parent"
+        android:layout_height="320px"
+        android:apiKey="0wGHQZmAJv4fRx3OwKOLNkdDPJbd6uzUbJssgKg"
+        android:clickable="true" />
+    
+</RelativeLayout>
