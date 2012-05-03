@@ -1,44 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
-    
-    <EditText
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" >
+
+        <EditText
             android:id="@+id/location"
+            android:layout_width="250px"
+            android:layout_height="wrap_content"
+            android:hint="Enter a location here" />
+
+        <Button
+            android:id="@+id/search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-			android:layout_alignParentLeft="true" 
-			android:layout_alignParentTop="true" 
-			android:hint="Enter a location here"/>
-<!-- 
-<EditText android:id="@+id/nomEdit" android:hint="Entrez votre nom ici"
-android:layout_width="fill_parent" android:layout_height="wrap_content"
-android:layout_alignParentRight="true" android:layout_alignParentTop="true" />
-  -->
-<Button android:id="@+id/search" android:text="Search"
-android:layout_width="wrap_content" android:layout_height="wrap_content"
-android:layout_toRightOf="@id/location" android:layout_alignParentTop="true" />
+            android:text="Search" />
+    </LinearLayout>
 
-        <com.google.android.maps.MapView
+    <com.google.android.maps.MapView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/map"
         android:layout_width="fill_parent"
-        android:layout_height="420px"
-		android:layout_below="@id/search"
-		android:layout_alignParentLeft="true" 
+        android:layout_height="380px"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/header"
         android:apiKey="0wGHQZmAJv4fRx3OwKOLNkdDPJbd6uzUbJssgKg"
         android:clickable="true" />
 
-<!-- 
-<Button android:id="@+id/annuler" android:text="annuler"
-android:layout_width="wrap_content" android:layout_height="wrap_content"
-android:layout_toLeftOf="@id/search" android:layout_alignTop="@id/search" />    
- -->    
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" >
+
+        <Button
+            android:id="@+id/center_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="center" />
+
+        <Button
+            android:id="@+id/zoomout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/center_map"
+            android:text="-" />
+
+        <Button
+            android:id="@+id/zoomin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/zoomout"
+            android:text="+" />
         
-<!-- 
-        
+    </RelativeLayout>
+    <!--
     <com.google.android.maps.MapView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/map"
@@ -46,6 +70,6 @@ android:layout_toLeftOf="@id/search" android:layout_alignTop="@id/search" />
         android:layout_height="320px"
         android:apiKey="0wGHQZmAJv4ehdyuKvnujiovUqXPFctTfvwtB5w"
         android:clickable="true" />
--->
-    
+    -->
+
 </RelativeLayout>
