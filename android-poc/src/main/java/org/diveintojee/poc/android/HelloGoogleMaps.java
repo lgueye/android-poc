@@ -5,7 +5,6 @@ import java.util.List;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -16,6 +15,8 @@ import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapView;
 import com.google.android.maps.OverlayItem;
+
+import de.akquinet.android.androlog.Log;
 
 public class HelloGoogleMaps extends MapActivity {
 
@@ -57,10 +58,10 @@ public class HelloGoogleMaps extends MapActivity {
         markers = new HelloGoogleMapsMakers(getResources().getDrawable(R.drawable.marker), mapView.getContext());
         // lat/long of Opéra Garnier, Paris
 
-        final GeoPoint location = new GeoPoint((int) (48.871944 * 1E6), (int) (2.331667 * 1E6));
-        addMarkerToLocation(location, "Opéra Garnier, 75009 Paris, France", "Some bla bla about Opéra Garnier");
-        animateToLocation(location, 16);
+        final GeoPoint defaultLocation = new GeoPoint((int) (48.871944 * 1E6), (int) (2.331667 * 1E6));
         mapView.invalidate();
+        animateToLocation(defaultLocation, 15);
+        addMarkerToLocation(defaultLocation, "Opéra Garnier, 75009 Paris, France", "Some bla bla about Opéra Garnier");
 
         final Button searchButton = (Button) findViewById(R.id.search);
         geocoder = new Geocoder(this);
@@ -79,19 +80,20 @@ public class HelloGoogleMaps extends MapActivity {
                 }
                 if (addressList == null || addressList.size() <= 0) {
                     final String message = "No address found for location [" + locationName + "]";
+                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                     Log.i("android-poc", message);
                 } else {
                     final Address address = addressList.get(0);
                     final String message = "Found address " + address.toString() + " for location [" + locationName
                         + "]";
                     Log.i("android-poc", message);
-                    // Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                     final int lat = (int) (address.getLatitude() * 1E6);
                     final int lng = (int) (address.getLongitude() * 1E6);
-                    final GeoPoint pt = new GeoPoint(lat, lng);
-                    addMarkerToLocation(location, locationName, "Should find some stuff about this location");
-                    animateToLocation(location, 16);
+                    final GeoPoint foundLocation = new GeoPoint(lat, lng);
                     mapView.invalidate();
+                    animateToLocation(foundLocation, 15);
+                    addMarkerToLocation(foundLocation, locationName, "Should find some stuff about this location");
                 }
             }
         });

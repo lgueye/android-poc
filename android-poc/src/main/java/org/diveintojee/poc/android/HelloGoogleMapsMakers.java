@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
-import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.widget.Toast;
 
@@ -21,7 +20,6 @@ public class HelloGoogleMapsMakers extends ItemizedOverlay<OverlayItem> {
 
     private final List<OverlayItem> overlayItems = new ArrayList<OverlayItem>();
     private final Context context;
-    private Paint innerPaint, borderPaint;
 
     /**
      * @param defaultMarker
@@ -45,41 +43,6 @@ public class HelloGoogleMapsMakers extends ItemizedOverlay<OverlayItem> {
     @Override
     protected OverlayItem createItem(final int itemIndex) {
         return overlayItems.get(itemIndex);
-    }
-
-    // @Override
-    // public void draw(final Canvas canvas, final MapView mapView, final boolean shadow) {
-    // final Projection projection = mapView.getProjection();
-    // for (final OverlayItem overlayItem : overlayItems) {
-    // final GeoPoint myLocationGeoPoint = overlayItem.getPoint();
-    // final Point myPoint = new Point();
-    // projection.toPixels(myLocationGeoPoint, myPoint);
-    // final int radiusPixel = (int) projection.metersToEquatorPixels(50);
-    // canvas.drawCircle(myPoint.x, myPoint.y, radiusPixel, getInnerPaint());
-    // canvas.drawCircle(myPoint.x, myPoint.y, radiusPixel, getBorderPaint());
-    // }
-    // super.draw(canvas, mapView, shadow);
-    //
-    // }
-
-    public Paint getBorderPaint() {
-        if (borderPaint == null) {
-            borderPaint = new Paint();
-            borderPaint.setARGB(255, 68, 89, 82);
-            borderPaint.setAntiAlias(true);
-            borderPaint.setStyle(Paint.Style.STROKE);
-            borderPaint.setStrokeWidth(2);
-        }
-        return borderPaint;
-    }
-
-    public Paint getInnerPaint() {
-        if (innerPaint == null) {
-            innerPaint = new Paint();
-            innerPaint.setARGB(225, 68, 89, 82); // gray
-            innerPaint.setAntiAlias(true);
-        }
-        return innerPaint;
     }
 
     /**
